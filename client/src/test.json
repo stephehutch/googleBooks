@@ -1,0 +1,20 @@
+[  {
+    "id": 0,
+    "Title": "Kirby",
+    "image": "https://i.dlpng.com/static/png/354531_preview.png",    
+    "snippit": "ProTip! Updating your profile with your name, location, and a profile picture helps other GitHub users get to know you."
+
+  },
+  {
+    "id": 1,
+    "Title": "Isabelle",
+    "image": "https://vignette.wikia.nocookie.net/mario/images/2/2b/Isabelle_SSBU.png/revision/latest?cb=20180914122159",
+    "snippit": "ProTip! Updating your profile with your name, location, and a profile picture helps other GitHub users get to know you."
+  },
+  {
+    "id": 2,
+    "Title": "Inkling",
+    "image": "https://static.tvtropes.org/pmwiki/pub/images/dvcstgr.png",
+    "snippit": "ProTip! Updating your profile with your name, location, and a profile picture helps other GitHub users get to know you."
+  }
+]
