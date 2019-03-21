@@ -4,16 +4,22 @@ import "./App.css";
 //import Nav from "./components/nav";
 import BookDisplay from "./components/bookDisplay";
 import BookCard from "./components/bookCard";
+import savedBooks from "./components/savedBooks";
 import TitleCard from "./components/titleCard";
 import SearchBar from "./components/searchBar";
 //import book from "./book.json"
-
+import API from "./utils/API";
 const Books = [];
+let savedList = false;
+
+const showSaved = () =>  {
+  savedList = true
+}
 
 class App extends Component {
 
   state = {
-    searchTerm: "Book Title",
+    searchTerm: "Waldo",
     Books: Books
   };
 
@@ -24,7 +30,6 @@ class App extends Component {
       const value = event.target.value;
       const name = event.target.name;
 
-      //console.log(value);
 
       // Updating the input's state
       this.setState({
@@ -47,11 +52,12 @@ class App extends Component {
           [...Books,
           data.items ?
             {
+              id: data.items[0].id,
               title: data.items[0].volumeInfo.title,
               image: data.items[0].volumeInfo.imageLinks.smallThumbnail,
               description: data.items[0].volumeInfo.description,
               author: data.items[0].volumeInfo.authors[0],
-              link: data.items[0].volumeInfo.accessInfo
+              link: data.items[0].accessInfo.webReaderLink
             }
             : {
               title: "Book Title",
@@ -69,6 +75,30 @@ class App extends Component {
       console.log(this.state.Books)
     };
 
+    const handleBookSave = () => {
+      //id
+
+     //const BookToDate = this.state.Books.find(book => book.id === id);
+      const bookToSave = {
+
+        book_title: this.state.Books[0].title,
+        book_image: this.state.Books[0].image,
+        book_description: this.state.Books[0].description,
+        book_author: this.state.Books[0].author,
+        book_link: this.state.Books[0].link
+      }
+      
+      this.setState({
+        searchTerm: "",
+        Books: Books
+      })
+      API.saveBook(bookToSave).then(//() => this.getBooks()
+      res => console.log(res.data)
+      );
+    };
+
+ 
+
     return (
       <div className="App container">
         {/* <Nav /> */}
@@ -82,11 +112,12 @@ class App extends Component {
               onChange={handleInputChange} />
           </div>
           <button type="submit" className="btn btn-primary mb-2" onClick={handleFormSubmit}>Search</button>
+          <button type="submit" className="btn btn-primary mb-2" onClick={showSaved}>Search</button>
         </SearchBar>
         {this.state.Books.length > 0 ? (
           this.state.Books.map(books =>
-            <BookDisplay>
-              <BookCard>
+            <BookDisplay key={books.id} >
+              <BookCard >
                 <div className="row">
                   <div className="col-3">
                     <img className="card-img-top" src={books.image}
@@ -98,10 +129,14 @@ class App extends Component {
                       <p className="card-text"> {books.description}</p>
                     </div>
                   </div>
-
+                
                 </div>
                 {/* <DeleteBtn /> */}
               </BookCard>
+              <div className="btn-group" role="group">
+                  <button onClick={() => handleBookSave(books.id)}
+                  type="button" className="btn btn-info">Save</button>
+                </div>  
             </BookDisplay>)
         ) : (
             <BookDisplay>
@@ -121,7 +156,10 @@ class App extends Component {
               </BookCard>
             </BookDisplay>
           )}
-
+          {savedList ? 
+          <savedBooks /> :
+          <br />
+          }
       </div>
     );
   }
