@@ -1,26 +1,25 @@
 import React, { Component } from "react";
 //import logo from "./logo.svg";
 import "./App.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 //import Nav from "./components/nav";
 import BookDisplay from "./components/bookDisplay";
 import BookCard from "./components/bookCard";
-import savedBooks from "./components/savedBooks";
+import SavedBooks from "./components/savedBooks";
 import TitleCard from "./components/titleCard";
 import SearchBar from "./components/searchBar";
+import UpdateBook from "./components/updateBook";
 //import book from "./book.json"
 import API from "./utils/API";
 const Books = [];
-let savedList = false;
 
-const showSaved = () =>  {
-  savedList = true
-}
 
 class App extends Component {
 
   state = {
     searchTerm: "Waldo",
-    Books: Books
+    Books: Books,
+    showSaved: false
   };
 
   render() {
@@ -97,9 +96,17 @@ class App extends Component {
       );
     };
 
- 
+    const handleShowSave = () => {
+
+      this.setState({
+         showSaved: !this.state.showSaved
+      })
+     
+    };
+
 
     return (
+      <Router>
       <div className="App container">
         {/* <Nav /> */}
         <TitleCard />
@@ -112,7 +119,7 @@ class App extends Component {
               onChange={handleInputChange} />
           </div>
           <button type="submit" className="btn btn-primary mb-2" onClick={handleFormSubmit}>Search</button>
-          <button type="submit" className="btn btn-primary mb-2" onClick={showSaved}>Search</button>
+          <button type="button" className="btn btn-primary mb-2" onClick={handleShowSave}>Show Saved</button>
         </SearchBar>
         {this.state.Books.length > 0 ? (
           this.state.Books.map(books =>
@@ -156,11 +163,14 @@ class App extends Component {
               </BookCard>
             </BookDisplay>
           )}
-          {savedList ? 
-          <savedBooks /> :
+          {this.state.showSaved ? 
+          <SavedBooks /> :
           <br />
           }
       </div>
+
+    {/* <Route path="/update/:id" component={UpdateBook} /> */}
+    </Router>
     );
   }
 }
