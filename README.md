@@ -1,81 +1,49 @@
-# Create React Express App
+#Google Book Search
 
-## About This Boilerplate
-
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
-
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
-
-## Starting the app locally
-
-Start by installing front and backend dependencies. While in this directory, run the following command:
-
-```
-npm install
-```
-
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+See this project in action:(https://drive.google.com/file/d/1Fn80eWtcpA0B5f2pCq8OM8NwB4Un4PFY/view)
 
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Interfaces
+## Available Scripts
 
-In this activity we will design and implement interfaces.
+In the project directory, you can run:
 
-## Instructions
+### `npm start`
 
-* Consider the class of items you can print. This includes books and magazines, but might also include web pages and PDFs. As a designer, do you want to consider _all_ printable items? Or do you want to restrict yourself to only one subset? Can you account for the behavior of both? In a real project, requirements will define boundaries, but for now, draw them based on what you think is possible.
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-interface Things {
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
+### `npm test`
 
-    CheckIfMoves()
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-}
+### `npm run build`
 
-Class PrintableThing  implements Things {
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-     ChecktypeOfPrinter() {
-         numOfSidesneed > 2 = 3dbrint
-         if color => use color printer 
-         if numOfSidesneed < 2 = NOT PRINTABLE
-     }; 
-}
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-Class Book extends PrintableThing implents Thing {
-    binding(){
-        check if sipiral or sting or glue
-    }
-}
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run eject`
 
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-* Once you've got a working list of things you can print, come up with some methods that each of them should have.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-* Collect these methods into an interface called `Printable`.
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-* Once you're satisfied with your `Printable` interface, choose some of the classes you thought of earlier, and make them implement `Printable`. Instead of implementing each method, just comment out what each might do in pseudocode. Does it look like each of your classes will implement their `Printable` methods uniquely? Discuss with your partner whether interfaces seem like a useful approach, here. If not, can you think of any alternatives?
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-* You'll have to switch gears a bit for the next part of this activity. Take a moment to discuss what an Object Relational Mappers (ORM) is with your partner. To refresh your memory, they're tools that let you talk to _any_ database. Sequelize, for example, lets you use MySQL; PostgreSQL; or MongoDB.
+## Learn More
 
-* Obviously, MySQL, PostgreSQL, and MongoDB are each very different tools—otherwise, people wouldn't make such a big deal about choosing between them! The advantage to a tool like Sequelize is that it lets us use each of them without worrying about the individual details. In other words, Sequelize defines a(n) common *** for interacting with _any_ database (fill in the blank).
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-* Imagine you're in the early stages of building such an ORM. You want your users to be able to use a single set of methods to talk to any database they'd like. What Java tool do you use to specify these methods?
-
-* Let's call your specification a `DatabaseService`. Create a file for it; declare it properly; and brainstorm some methods you think belong on this service. You'll probably want to be able to `add` or `insert` items, for instance. What else? Don't worry about coming up with _everything_. Just get a few good examples down. Be prepared to discuss your choice of methods with the class!
-
-### Hints
-
-* Check out the [Oracle documentation for Interfaces](https://docs.oracle.com/javase/tutorial/java/concepts/interface.html)
+To learn React, check out the [React documentation](https://reactjs.org/).
