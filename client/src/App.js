@@ -107,7 +107,8 @@ class App extends Component {
 
     return (
       <Router>
-      <div className="App container">
+      <div className="App">
+      <div className="container">
         {/* <Nav /> */}
         <TitleCard />
         <SearchBar>
@@ -167,6 +168,7 @@ class App extends Component {
           <SavedBooks /> :
           <br />
           }
+          </div>
       </div>
 
     {/* <Route path="/update/:id" component={UpdateBook} /> */}

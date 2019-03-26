@@ -11,7 +11,9 @@ const Books = new Schema({
     required: true 
   },
     book_description: String,
+    book_image: String,
     book_link: String,
+    book_read: Boolean, 
     // book_date: { type: Date, default: Date.now }
 });
 

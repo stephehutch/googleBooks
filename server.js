@@ -68,6 +68,17 @@ bookRoutes.route("/:add").post(function (req, res) {
   })
 });
 
+bookRoutes.route("/:delete").delete(function (req, res) {
+    let id = req.params.id
+    Books.findOneAndRemove(id, function (err, book) {
+      if(err) {
+        res.status(400).send("book not found")
+      }
+      res.json(book);
+    })
+  });
+
+
 bookRoutes.route("/update/:id").post(function (req, res) {
   let id = req.params.id
   Books.findById(id, function (err, book) {
@@ -75,7 +86,6 @@ bookRoutes.route("/update/:id").post(function (req, res) {
      res.status(404).send("data is not found")
    } else {
     book.book_title = req.body.book_title,
-    book.book_image = req.body.book_image,
     book.book_image = req.body.book_image,
     book.book_author = req.body.book_author,
     book.book_description = req.body.book_description,
